@@ -3,32 +3,34 @@
 
 ## users テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| nickname | string | unique: true |
-|   email  | string | unique: true |
-| password | string | unique: true |
-|   name   | string | null: false  |
-| birthday | string | null: false  |
+|        Column      |  Type  | Options      |
+| ------------------ | ------ | ------------ |
+|       nickname     | string | unique: true |
+|        email       | string | unique: true |
+| encrypted_password | string | unique: true |
+|     family_name    | string | null: false  |
+|      given_name    | string | null: false  |
+|  family_name_kana  | string | null: false  |
+|  given_name_kana   | string | null: false  |
+|      birthday      |  date  | null: false  |
 
 ### Association
 has_many :items
 has_many :purchase
-has_one :address
 
 
 ## items テーブル
 
-|   Column  |   Type   | Options                        |
-| --------- | -------- | ------------------------------ |
-| item_name |  string  | null: false                    |
-|explanation|   text   | null: false                    |
-| category  |  string  | null: false                    |
-| shipping  |  string  | null: false                    |
-|   area    |  string  | null: false                    |
-| day_ship  |  string  | null: false                    |
-|   price   |  integer | null: false                    |
-|   user    |references| null: false, foreign_key: true |
+|    Column   |   Type   | Options                        |
+| ----------- | -------- | ------------------------------ |
+|  item_name  |  string  | null: false                    |
+| explanation |   text   | null: false                    |
+| category_id |  string  | null: false                    |
+| shipping_id |  string  | null: false                    |
+|   area _id  |  string  | null: false                    |
+| day_ship_id |  string  | null: false                    |
+|    price    |  integer | null: false                    |
+|    user     |references| null: false, foreign_key: true |
 
 belong_to :user
 has_one :purchase
@@ -37,9 +39,8 @@ has_one :purchase
 
 ## purchases テーブル
 
-| Column | Type       | Options                        |
+| Column |    Type    | Options                        |
 | ------ | ---------- | ------------------------------ |
-|  day   |  datetime  | null: false                    |
 |  user  | references | null: false, foreign_key: true |
 |  item  | references | null: false, foreign_key: true |
 
@@ -57,10 +58,9 @@ has_one :address
 | prefecture  |   string   | null: false                    |
 |     city    |   string   |  null: false                   |
 | address_num |   string   |null: false                     |
-|building_name|   string   | null: false                    |
-|    phone    |   integer  | null: false                    |
+|building_name|   string   |                                |
+|    phone    |   string   | null: false                    |
 |    user     | references | null: false, foreign_key: true |
 
 ### Association
 belong_to :purchase
-belong_to :user
