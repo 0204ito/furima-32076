@@ -25,10 +25,11 @@ has_many :purchase
 | ----------- | -------- | ------------------------------ |
 |  item_name  |  string  | null: false                    |
 | explanation |   text   | null: false                    |
-| category_id |  string  | null: false                    |
-| shipping_id |  string  | null: false                    |
-|   area _id  |  string  | null: false                    |
-| day_ship_id |  string  | null: false                    |
+|  status_id  |  integer | null: false                    |
+| category_id |  integer | null: false                    |
+| shipping_id |  integer | null: false                    |
+|   area _id  |  integer | null: false                    |
+| day_ship_id |  integer | null: false                    |
 |    price    |  integer | null: false                    |
 |    user     |references| null: false, foreign_key: true |
 
@@ -54,8 +55,8 @@ has_one :address
 
 |    Column   |    Type    | Options                        |
 | ----------- | ---------- | ------------------------------ |
-| postal_code |   integer  | null: false                    |
-| prefecture  |   string   | null: false                    |
+| postal_code |  integer   | null: false                    |
+|prefecture_id|  integer   | null: false                    |
 |     city    |   string   |  null: false                   |
 | address_num |   string   |null: false                     |
 |building_name|   string   |                                |
