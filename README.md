@@ -24,7 +24,7 @@ has_many :purchase
 |    Column   |   Type   | Options                        |
 | ----------- | -------- | ------------------------------ |
 |  item_name  |  string  | null: false                    |
-| explanation |   text   | null: false                    |
+|  item-info  |   text   | null: false                    |
 |  status_id  |  integer | null: false                    |
 | category_id |  integer | null: false                    |
 | shipping_id |  integer | null: false                    |
