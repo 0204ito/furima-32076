@@ -21,17 +21,17 @@ has_many :purchase
 
 ## items テーブル
 
-|    Column   |   Type   | Options                        |
-| ----------- | -------- | ------------------------------ |
-|  item_name  |  string  | null: false                    |
-|  item-info  |   text   | null: false                    |
-|  status_id  |  integer | null: false                    |
-| category_id |  integer | null: false                    |
-| shipping_id |  integer | null: false                    |
-|   area _id  |  integer | null: false                    |
-| day_ship_id |  integer | null: false                    |
-|    price    |  integer | null: false                    |
-|    user     |references| null: false, foreign_key: true |
+|          Column         |   Type   | Options                        |
+| ----------------------- | -------- | ------------------------------ |
+|            name         |  string  | null: false                    |
+|            info         |   text   | null: false                    |
+|     sales_status_id     |  integer | null: false                    |
+|        category_id      |  integer | null: false                    |
+| shipping_free_status_id |  integer | null: false                    |
+|      prefecture _id     |  integer | null: false                    |
+|  scheduled_delivery_id  |  integer | null: false                    |
+|           price         |  integer | null: false                    |
+|            user         |references| null: false, foreign_key: true |
 
 belong_to :user
 has_one :purchase
