@@ -3,7 +3,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.order('created_at DESC')
-   
   end
 
   def new
@@ -11,23 +10,23 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item=Item.find((params[:id]))
+    @item = Item.find((params[:id]))
   end
 
-  #def edit
-    #item = Item.find(params[:id])
-  #end
-   
-  #def update
-    #item = Item.find(params[:id])
-    #item.update(item_params)
-  #end
+  # def edit
+  # item = Item.find(params[:id])
+  # end
 
-  #def destroy
-    #item = Item.find(params[:id])
-    #item.destroy
-  #end
-  
+  # def update
+  # item = Item.find(params[:id])
+  # item.update(item_params)
+  # end
+
+  # def destroy
+  # item = Item.find(params[:id])
+  # item.destroy
+  # end
+
   def create
     @item = Item.new(item_params)
     if @item.save
