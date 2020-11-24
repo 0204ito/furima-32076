@@ -6,7 +6,9 @@ class OrdersController < ApplicationController
     @order =Order.new
     if current_user.id == @item.user_id
       redirect_to "/items"
-     end
+    elsif @item.purchase != nil
+      redirect_to "/items" 
+    end
   end
 
   def create
