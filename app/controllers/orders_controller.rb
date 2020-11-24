@@ -4,18 +4,16 @@ class OrdersController < ApplicationController
 
   def index
     @order =Order.new
-    if current_user.id == @item.user_id
-      redirect_to root_path
-    elsif @item.purchase != nil
+    if current_user.id == @item.user_id || @item.purchase != nil
       redirect_to root_path 
     end
   end
 
   def create
     @order =Order.new (order_params)#カレントユーザー＝購入者の情報を取得して一緒に保存したい
-    @order.save#(order_params)の情報が揃ったら保存してね
     if @order.valid?#バリデーションを通過してるか
       pay_item
+      @order.save#(order_params)の情報が揃ったら保存してね
       redirect_to root_path
     else
       render action: :index
