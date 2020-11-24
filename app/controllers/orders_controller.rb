@@ -5,9 +5,9 @@ class OrdersController < ApplicationController
   def index
     @order =Order.new
     if current_user.id == @item.user_id
-      redirect_to "/items"
+      redirect_to root_path
     elsif @item.purchase != nil
-      redirect_to "/items" 
+      redirect_to root_path 
     end
   end
 
@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
     @order.save#(order_params)の情報が揃ったら保存してね
     if @order.valid?#バリデーションを通過してるか
       pay_item
-      redirect_to "/items"
+      redirect_to root_path
     else
       render action: :index
     end
