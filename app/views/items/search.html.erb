@@ -1,0 +1,70 @@
+<%# CSS・・・assets/stylesheets/shared/header.css %>
+<header class='top-page-header'>
+<%#検索機能%>
+  <div class='search-bar-contents'>
+    <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
+    <%= form_with(url: search_items_path, local: true, method: :get, class: "search-form") do |f| %>
+      <%= f.text_field :keyword, placeholder:'キーワードから探す', class:'input-box' %>
+        <%= button_tag type: :submit, class:"search-button" do %><%#buttonタグにより「image_tagで表示させた画像」をsubmitボタンにする%>
+          <%= image_tag("search.png", class:"search-icon") %>
+        <% end %>
+    <% end %>
+  </div>
+<%#検索機能%>
+
+  <%# 商品一覧 %>
+  <div class='item-contents'>
+    <h2 class='title'>検索結果</h2>
+    <ul class='item-lists'>
+      <% @items.each do |item| %>
+      <%# 商品のインスタンス変数の中身のすべてを展開 %>
+      <li class='list'>
+        <%= link_to item_path(item.id) do %> 
+        <div class='item-img-content'>
+          <%= image_tag item.image, class: "item-img" %>
+          <% if item.purchase != nil %>   <%# itemsの中で１つずつ取り出したitemに紐ずくpurchaseが存在するかどうか(売れてればsold outを表示) %>
+          <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div>
+          <% end %>
+        </div>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            <%= item.name %>
+          </h3>
+          <div class='item-price'>
+            <span><%= item.price %>円<br><%= item.shipping_free_status.name %></span>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </li>
+    
+      <% end %>
+      <% if @items.length == 0%>
+      <%# @itemsの中に並んでいるデータが無いときはlengthメソッドで配列の数が0を指定。配列の中身がないということになる %>
+      <li class='list'>
+        <%= link_to '#' do %>
+        <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "item-img" %>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            商品を出品してね！
+          </h3>
+          <div class='item-price'>
+            <span>99999999円<br>(税込み)</span>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </li>
+      <%# //商品がある場合は表示されないようにしましょう %>
+      <%end%>
+    </ul>
+  </div>
+  <%# /商品一覧 %>
