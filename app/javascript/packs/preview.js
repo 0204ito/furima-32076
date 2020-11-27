@@ -30,23 +30,21 @@ if (document.URL.match( /new/ )  || document.URL.match( /edit/ )) {
       //<div>
       //<img src="    blobにある画像のURL   ">
       //</div>
-    }
-
-    document.getElementsByClassName('item-box-image').addEventListener('change', function(e){
-      // 画像が表示されている場合のみ、すでに存在している画像を削除する
-      const imageContent = document.querySelector('img');
-      if (imageContent){
-        imageContent.remove();
-      }
-
-
-      //２枚目以降のイベント発火
+      
       inputHTML.addEventListener('change', (e) => {
         file = e.target.files[0];
         blob = window.URL.createObjectURL(file);
 
         createImageHTML(blob)
       })
-    })
-  })
+    }
+
+    document.getElementById('item_image').addEventListener('change', (e) => {
+      let file = e.target.files[0];
+      let blob = window.URL.createObjectURL(file);
+
+      createImageHTML(blob)
+
+    });
+  });
 }
