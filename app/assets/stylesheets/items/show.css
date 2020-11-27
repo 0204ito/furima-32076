@@ -25,12 +25,25 @@
   font-size: 25px;
 }
 
+
+.img-content {
+  background-color: #FFF;
+  height: 30vh;
+  width: 70vw;
+  min-height: 500px;
+  display: flex;
+  justify-content: space-around
+}
+
+
+
 .item-box-img {
-  height: 50vh;
-  width: 60vw;
+  height: 30vh;
+  width: 30vw;
   min-height: 500px;
   background-color: rgb(205, 202, 202);
   object-fit: contain;
+  margin: 10px;
 }
 
 .item-price-box {
