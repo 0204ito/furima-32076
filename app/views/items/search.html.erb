@@ -21,7 +21,7 @@
       <li class='list'>
         <%= link_to item_path(item.id) do %> 
         <div class='item-img-content'>
-          <%= image_tag item.image, class: "item-img" %>
+          <%= image_tag item.images[0], class: "item-img" %>
           <% if item.purchase != nil %>   <%# itemsの中で１つずつ取り出したitemに紐ずくpurchaseが存在するかどうか(売れてればsold outを表示) %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
