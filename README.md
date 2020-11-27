@@ -38,6 +38,7 @@ has_one :purchase
 
 
 
+
 ## purchases テーブル
 
 | Column |    Type    | Options                        |
