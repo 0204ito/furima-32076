@@ -40,16 +40,14 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items= Item.search(params[:keyword]).order('created_at DESC')
-  
+    @items = Item.search(params[:keyword]).order('created_at DESC')
   end
-
 
   private
 
   def item_params
-    params.require(:item).permit( :name, :info, :price, :category_id, :sales_status_id, :shipping_free_status_id, :prefecture_id, :scheduled_delivery_id,images: []).merge(user_id: current_user.id)
-  end #images: []最後尾に書かなくてはいけない
+    params.require(:item).permit(:name, :info, :price, :category_id, :sales_status_id, :shipping_free_status_id, :prefecture_id, :scheduled_delivery_id, images: []).merge(user_id: current_user.id)
+  end # images: []最後尾に書かなくてはいけない
 
   def set_item
     @item = Item.find(params[:id])

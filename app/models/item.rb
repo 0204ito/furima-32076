@@ -2,7 +2,7 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :info
-    validates :images  #アソシエーションを変更したらバリデーションも変更
+    validates :images  # アソシエーションを変更したらバリデーションも変更
     validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
     validates :user_id
   end
@@ -27,16 +27,15 @@ class Item < ApplicationRecord
   belongs_to :scheduled_delivery
 
   belongs_to :user
-  #has_one_attached :image
-  has_many_attached :images#複数枚の画像保存のためアソシエーション変更
+  # has_one_attached :image
+  has_many_attached :images # 複数枚の画像保存のためアソシエーション変更
   has_one :purchase
 
   def self.search(search)
-    if search != "" #検索ワードが空でなければ実行
+    if search != '' # 検索ワードが空でなければ実行
       Item.where('name LIKE(?)', "%#{search}%")
     else
       Item.all
     end
   end
-
 end
